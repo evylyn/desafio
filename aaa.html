@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<style>
+  *{
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+   
+  }
+  
+  
+  
+  
+  .calcular{
+    margin: auto;
+    color: white;
+    background-color: grey;
+    border: 20px;
+    padding: 15px;
+    width: 50%;
+    border-color: black;
+  }
+  
+  
+
+</style>
+<script >
+  function verificarFase() {
+  var nome = document.getElementById("nome").value;
+  var idade = document.getElementById("idade").value;
+  var fase;
+
+  if (idade <= 11) {
+    fase = "Criança";
+  } else if (idade <= 20) {
+    fase = "Adolescente";
+  } else if (idade <= 65) {
+    fase = "Adulto";
+  } else {
+    fase = "Idoso";
+  }
+
+  document.getElementById("resultado").innerHTML = nome + ", você está na fase da vida: " + fase;
+}
+
+function validarLetras(event) {
+  var tecla = event.keyCode || event.which;
+  var teclaPermitida = ((tecla >= 65 && tecla <= 90) || (tecla >= 97 && tecla <= 122) || (tecla == 32));
+  if (!teclaPermitida) {
+      event.preventDefault();
+  }
+}
+
+function validarNumeros(event) {
+  var tecla = event.keyCode || event.which;
+  var teclaPermitida = (tecla >= 48 && tecla <= 57);
+  if (!teclaPermitida) {
+      event.preventDefault();
+  }
+}
+</script>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Verificar Fase da Vida</title>
+  </head>
+  <body>
+    <br>
+    <br>
+    <br>
+    
+    <h1>Verificar Fase da Vida</h1>
+    <form class="calcular">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" onkeypress="return validarLetras(event)"><br><br>
+      <label for="idade">Idade:</label>
+      <input type="number" id="idade" name="idade" onkeypress="return validarNumeros(event)"><br><br>
+      <input type="button" value="Verificar Fase" onclick="verificarFase()">
+    </form>
+    <br>
+    <div id="resultado"></div>
+  </body>
+</html>
